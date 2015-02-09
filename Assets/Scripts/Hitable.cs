@@ -9,21 +9,20 @@ public abstract class Hitable : MonoBehaviour
 	public float minDamageToDeal;
 	public float startHp;
 	float hp;
+	Vector2 lastVelocity = new Vector2();
 	
 	public float Hp {
 		get {
 			return hp;
 		}
 	}
-	
-	protected Vector2 GetImpulse() {
+
+	void LateUpdate() { lastVelocity = rigidbody2D.velocity;}
+			
+	protected Vector2 GetMomentum () {
 		return rigidbody2D.velocity * rigidbody2D.mass;
 	}
-	
-	protected float GetRotationImpulse() {
-		return rigidbody2D.inertia * rigidbody2D.angularVelocity;
-	}
-	
+		
 	//use it in order to don't override Start
 	protected virtual void HitableStart () {}
 	void Start ()
@@ -36,9 +35,10 @@ public abstract class Hitable : MonoBehaviour
 	
 	//use it in order to don't override OnColisionEnter
 	protected virtual void HitableOnCollisionEnter (Collision2D collision) {}
-	void OnCollisionEnter2D (Collision2D collision)
-	{
-		float damage = 0;		
+	void OnCollisionEnter2D (Collision2D collision) //TODO: Different Physics Materials.
+	{	
+		Vector2 momentum = lastVelocity * rigidbody2D.mass;  //Momentum before collision
+		float damage = (GetMomentum() - momentum).magnitude; //Momentum change
 		if (damage > minDamageToDeal) {
 			damage *= collisionDamageCoefficient;
 			hp -= damage;
@@ -46,7 +46,6 @@ public abstract class Hitable : MonoBehaviour
 				Die();
 			}
 		}
-		Debug.Log(damage.ToString() + ' ' + hp.ToString());
 		HitableOnCollisionEnter(collision);
 	}
 }
