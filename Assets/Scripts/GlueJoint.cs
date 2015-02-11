@@ -20,7 +20,7 @@ public class GlueJoint : MonoBehaviour {
 		    connectedBody.rigidbody2D.AddForceAtPosition(direction * -1 * distance * elasticity, bodyPos);
 		}
 		Debug.DrawLine(myPos, bodyPos, Color.red);
-		Debug.Log("Glue Force = " + (distance * elasticity).ToString());
+		//Debug.Log("Glue Force = " + (distance * elasticity).ToString());
 		if (distance * elasticity > maxForce) {
 			Destroy(this);
 		}

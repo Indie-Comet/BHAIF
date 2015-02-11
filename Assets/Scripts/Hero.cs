@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Hero : StickyCharacter {
+public class Hero : Hitable {
 	override protected void Die() {
 		Debug.Log("Hero Dead");
 		Destroy(gameObject);

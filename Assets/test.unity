@@ -979,6 +979,7 @@ GameObject:
   - 58: {fileID: 1098911841}
   - 114: {fileID: 1098911843}
   - 114: {fileID: 1098911842}
+  - 114: {fileID: 1098911845}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -1015,7 +1016,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1098911838}
   m_LocalRotation: {x: 0, y: 0, z: .866025448, w: .49999997}
-  m_LocalPosition: {x: -.708000004, y: 2.02099991, z: -6.30000019}
+  m_LocalPosition: {x: -1.81099999, y: 2.50900006, z: -6.30000019}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1045,10 +1046,6 @@ MonoBehaviour:
   collisionDamageCoefficient: .0399999991
   minDamageToDeal: 25
   startHp: 100
-  maxStickyDistance: .699999988
-  stickyElasticity: 1000
-  stickyElasticDistance: .5
-  isSticky: 1
 --- !u!114 &1098911843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1076,6 +1073,20 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
+--- !u!114 &1098911845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1098911838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20fda3cc3c11ff64c90ab54127b15c31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxStickyForce: 958.119995
+  stickyElasticity: 1766.66003
+  isSticky: 1
 --- !u!1 &1254247198
 GameObject:
   m_ObjectHideFlags: 0
@@ -1520,7 +1531,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1775183653}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: .129999995, y: .234999999, z: 0}
+  m_LocalPosition: {x: -3.32399988, y: .578999996, z: 0}
   m_LocalScale: {x: 3.2948246, y: 3.93860173, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

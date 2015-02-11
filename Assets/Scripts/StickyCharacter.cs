@@ -1,14 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public abstract class StickyCharacter : Hitable
-{
+public class StickyCharacter : MonoBehaviour {
 	public float maxStickyForce;
 	public float stickyElasticity;
 	public bool isSticky;
 	Hashtable contactJoints;
 	Hashtable contactPoints;
-
+	
 	public bool IsSticky {
 		get {
 			return isSticky;
@@ -25,20 +24,17 @@ public abstract class StickyCharacter : Hitable
 		}
 	}
 	
-	//use it in order to don't override Start
-	protected virtual void StickyStart ()	{}
-	protected override void HitableStart ()
+	void Start ()
 	{
 		contactJoints = new Hashtable();
 		contactPoints = new Hashtable();
-		StickyStart();
 	}
 	
-	//use it in order to don't override OnColisionEnter
-	protected virtual void StickyOnCollisionEnter (Collision2D collision){}
-	override protected void HitableOnCollisionEnter (Collision2D collision)
+	void OnCollisionEnter2D (Collision2D collision)
 	{
-		if (IsSticky && !contactJoints.Contains(collision.rigidbody)) {
+		if (IsSticky && (!contactJoints.Contains(collision.rigidbody) || contactJoints[collision.rigidbody].Equals(null))) {
+			if (contactJoints.Contains(collision.rigidbody))
+				contactJoints.Remove(collision.rigidbody);
 			foreach (ContactPoint2D contactPoint in collision.contacts) {
 				Vector3 point = contactPoint.point;
 				GlueJoint joint = gameObject.AddComponent<GlueJoint>();
@@ -51,6 +47,5 @@ public abstract class StickyCharacter : Hitable
 				contactPoints.Add(collision, contactPoint);
 			}
 		}
-		StickyOnCollisionEnter(collision);
 	}
 }
