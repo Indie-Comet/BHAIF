@@ -1014,8 +1014,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1098911838}
-  m_LocalRotation: {x: -.000726920494, y: .998834312, z: -.0433077402, w: -.0213071909}
-  m_LocalPosition: {x: 4.12300014, y: 2.625, z: -6.30000019}
+  m_LocalRotation: {x: 0, y: 0, z: .866025448, w: .49999997}
+  m_LocalPosition: {x: -.708000004, y: 2.02099991, z: -6.30000019}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1045,11 +1045,10 @@ MonoBehaviour:
   collisionDamageCoefficient: .0399999991
   minDamageToDeal: 25
   startHp: 100
-  maxStickyForce: 0
-  stickyDistance: 0
-  stickyDamingRatio: .5
-  stickyFrequency: 2
-  isSticky: 0
+  maxStickyDistance: .699999988
+  stickyElasticity: 1000
+  stickyElasticDistance: .5
+  isSticky: 1
 --- !u!114 &1098911843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1521,7 +1520,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1775183653}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.86999989, y: 3, z: 0}
+  m_LocalPosition: {x: .129999995, y: .234999999, z: 0}
   m_LocalScale: {x: 3.2948246, y: 3.93860173, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

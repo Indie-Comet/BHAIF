@@ -6,4 +6,8 @@ public class Hero : StickyCharacter {
 		Debug.Log("Hero Dead");
 		Destroy(gameObject);
 	}
+	
+	void Update() {
+		Debug.Log(Hp.ToString());
+	}
 }

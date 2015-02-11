@@ -4,12 +4,8 @@ using System.Collections;
 public abstract class StickyCharacter : Hitable
 {
 	public float maxStickyForce;
-	public float stickyDistance;
-	public float stickyDamingRatio;
-	public float stickyFrequency;
-
+	public float stickyElasticity;
 	public bool isSticky;
-	//ArrayList contactJoints;
 	Hashtable contactJoints;
 	Hashtable contactPoints;
 
@@ -45,14 +41,12 @@ public abstract class StickyCharacter : Hitable
 		if (IsSticky && !contactJoints.Contains(collision.rigidbody)) {
 			foreach (ContactPoint2D contactPoint in collision.contacts) {
 				Vector3 point = contactPoint.point;
-				SpringJoint2D joint = gameObject.AddComponent<SpringJoint2D>();
+				GlueJoint joint = gameObject.AddComponent<GlueJoint>();
 				joint.connectedBody = collision.rigidbody;
-				Vector3 anchor = point - transform.position;
-				Vector3 connectedAnchor = point - collision.transform.position;
-				joint.anchor = new Vector2(anchor.x, anchor.y);
-				joint.connectedAnchor = new Vector2(connectedAnchor.x , connectedAnchor.y);
-				joint.collideConnected = true;
-				joint.distance = stickyDistance;
+				joint.anchor = rigidbody2D.GetPoint(point);
+				joint.connectedAnchor = collision.rigidbody.GetPoint(point);
+				joint.elasticity = stickyElasticity;
+				joint.maxForce = maxStickyForce;
 				contactJoints.Add(collision.rigidbody, joint);
 				contactPoints.Add(collision, contactPoint);
 			}
